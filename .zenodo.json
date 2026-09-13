@@ -1,0 +1,13 @@
+{
+  "title": "tw-silent-subspace: reproduction code for the silent-subspace dimension theorem",
+  "upload_type": "software",
+  "creators": [
+    {"name": "Oltulu, Mehmet Akif", "affiliation": "Maovera AI Research, Istanbul", "orcid": "0009-0003-0928-0854"}
+  ],
+  "related_identifiers": [
+    {"identifier": "10.5281/zenodo.22730006", "relation": "isSupplementTo", "resource_type": "publication-preprint"}
+  ],
+  "keywords": ["Weil explicit formula", "Riemann hypothesis", "prolate spheroidal wave functions", "silent subspace", "finite-sampling truncation"],
+  "license": "MIT",
+  "access_right": "open"
+}
