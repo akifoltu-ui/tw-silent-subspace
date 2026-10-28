@@ -1,5 +1,5 @@
 {
-  "title": "tw-silent-subspace: reproduction code for the silent-subspace dimension theorem",
+  "title": "tw-silent-subspace: reproduction code and Lean 4 formal verification for the silent-subspace dimension theorem",
   "upload_type": "software",
   "creators": [
     {"name": "Oltulu, Mehmet Akif", "affiliation": "Maovera AI Research, Istanbul", "orcid": "0009-0003-0928-0854"}
