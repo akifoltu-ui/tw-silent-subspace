@@ -21,3 +21,15 @@ Each statement of the paper was matched line by line against its Lean theorem. T
 * `TwKeskinlik_v2.lean`: `TW.C_psd` (C >= 0, so the example satisfies the hypotheses of Proposition 7), `TW.rayleigh` ((3-sqrt 5)/2 <x,x> <= <x,Kx> for all x) and `TW.en_kucuk` (every eigenvalue of K is >= (3-sqrt 5)/2), so the eigenvector of Proposition 8 belongs to the smallest eigenvalue. Negative controls `kontrol/TwKeskinlikYanlis_v2a.lean` (bound raised by 1/100) and `kontrol/TwKeskinlikYanlis_v2b.lean` (indefinite matrix) are rejected.
 
 Axiom audit of the v2 files: only propext, Classical.choice and Quot.sound; logs in `denetim/`.
+
+## v2.2-v2.4 additions: rank link, minor criterion, disconjugacy, pole deflation (2026-10-29 to 2026-10-30)
+
+| File | Theorems | Version |
+|---|---|---|
+| `TwRank_v1_2.lean` | `TW.rank_of_gram_posDef`, `TW.dimW_eq_of_gram_posDef`: a positive definite Gram matrix L L^T gives full row rank, hence dim W = d - n | v2.2.0 |
+| `kontrol/TwRankKarsiOrnek_v1.lean` | `TWKontrol.posSemidef_yetmez`: sharpness of the hypothesis, positive semidefiniteness does not suffice (counterexample L = 0), proved without `sorry` | v2.2.0 |
+| `TwRankMinor_v1_3.lean` | `TWMinor.rank_of_submatrix_det_ne_zero`, `TWMinor.dimW_eq_of_submatrix_det_ne_zero`: a single nonvanishing maximal minor gives full row rank; `TWMinorKontrol.det_ne_zero_gerekli`: sharpness of the hypothesis | v2.3.0 |
+| `TwDisconj_v2_3.lean` | `TWDisconj.deriv_pos_of_pos_on`, `TWDisconj.pos_of_deriv_pos_bootstrap`, `TWDisconj.pos_of_integral_eq`: the positivity (disconjugacy) argument behind the pole-tameness lemma | v2.3.0 |
+| `TwHaynsworth_v2_1.lean` | `TWHayn.B_symm`, `TWHayn.Q_lin_comb`, `TWHayn.neg_plane_of_two_dirs`, `TWHayn.no_second_neg_dir`: algebraic core of pole deflation; the inertia-index hypothesis is carried explicitly | v2.4.0 |
+
+Axiom audit of these files: only propext, Classical.choice and Quot.sound; logs `denetim/TwRank_v1_2_denetim.log`, `denetim/TwRankKarsiOrnek_v1_denetim.log`, `denetim/TwRankMinor_v1_3_denetim.log`, `denetim/TwDisconj_v2_3_denetim.log`, `denetim/TwHaynsworth_v2_1_denetim.log`. `TwFormal.lean` is the library root of the Lake project.
