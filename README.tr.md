@@ -16,7 +16,8 @@ Bu yazılım kaydı: kavram DOI'si [10.5281/zenodo.23724476](https://doi.org/10.
 | v2.3.0 | 2026-10-30 | [10.5281/zenodo.24291599](https://doi.org/10.5281/zenodo.24291599) | Kutup uysallığı (pole-tameness) lemması, formel olarak doğrulandı; örnekleme matrisinin Chebyshev indirgemesi |
 | v2.4.0 | 2026-10-30 | [10.5281/zenodo.24291617](https://doi.org/10.5281/zenodo.24291617) | Kutup deflasyonu: kutupsuz formun tek negatif yönünü kutup koşulu tüketir |
 | v2.5.0 | 2026-11-03 | [10.5281/zenodo.24291670](https://doi.org/10.5281/zenodo.24291670) | Kör bölge payı: sabit bir test vektöründe `delta*` okuması |
-| v2.5.1 | 2026-11-17 | bu sürüm | v2.2.0-v2.5.0 belgelendirmesi; belgelerin Türkçe sürümü |
+| v2.5.1 | 2026-11-17 | [10.5281/zenodo.24293123](https://doi.org/10.5281/zenodo.24293123) | v2.2.0-v2.5.0 belgelendirmesi; belgelerin Türkçe sürümü |
+| v2.5.2 | 2026-11-22 | bu sürüm | Düzeltme: `tw_sigma_sert_v1.py` (v2.2.0) tarafından basılan `sigma_min(L)` alt sınırı geçersizdir, çünkü LDL pivotları `lambda_min(G)`'yi yukarıdan sınırlar; `tw_sigma_sert_v2.py` geçerli sınırı `G - D^2 I` üzerinde aralık LDL ile sertifikalar. Rank ve `dim W = 2` etkilenmez |
 
 ## Yeniden üretim araçları
 
@@ -25,7 +26,8 @@ Bu yazılım kaydı: kavram DOI'si [10.5281/zenodo.23724476](https://doi.org/10.
 | Dosya | Ne hesaplar | Koşum logları |
 |---|---|---|
 | `tw_reproduce.py` | Bölüm 5: iki hücrede rank L ve dim W = d - rank L; G1-G5 denetimleri, negatif kontroller `--dup-zero` ve `--inject-odd`, sınır okuması `--basis firstd` | `run_AB_canli.log`, `run_AB_canli.json`, `run_neg__dup_zero.log`, `run_neg__inject_odd.log` |
-| `tw_sigma_sert_v1.py` | Teorem 3 için eşitlik sertifikası: G = L L^T üzerinde aralık LDL, her pivot için pozitif alt sınır; tekrarlanan ordinatla negatif kontrol | `run_sertifika_canli.log` |
+| `tw_sigma_sert_v1.py` | Teorem 3 için eşitlik sertifikası: G = L L^T üzerinde aralık LDL, her pivot için pozitif alt sınır; tekrarlanan ordinatla negatif kontrol. Kayıt için korunur (v2.2.0); bastığı `sigma_min(L)` sınırı geçersizdir, bkz. v2.5.2 | `run_sertifika_canli.log` |
+| `tw_sigma_sert_v2.py` | Düzeltilmiş eşitlik sertifikası: G = L L^T'nin aynı pozitifliği (dolayısıyla rank L = N+1) ve G - D^2 I üzerinde aralık LDL ile sertifikalanan `sigma_min(L) > D`; L = [[1,1],[0,1]] öz-sınavı, v1 pivotlarının yeniden üretimi, SVD değerinin üstünde düşmesi gereken kayma, SVD ile tutarlılık | `run_sertifika_v2_canli.log` |
 | `cheb_indirge_v1.py` | Örnekleme matrisinin indirgenmesi: L[j,i] = h mu_{2i} psi_{2i}(s_j), dolayısıyla rank L = rank Psi | `run_cheb_indirge.log` |
 | `cheb_isaret_v1.py` | phi_i(w) = psi_{2i}(sqrt w) ailesinin Chebyshev (Haar) özelliği: rastgele nokta kümeleri üzerinde det[phi_i(w_j)] işareti, iki Legendre kesiminde ve iki hassasiyette; tekrarlanan noktayla negatif kontrol | `run_cheb_isaret_A.log`, `run_cheb_isaret_B.log` |
 | `cheb_osilasyon_v1.py` | Markov ölçütü: phi_i'nin (0,1) üzerinde tam i sıfırı vardır, ardışık sıfır kümeleri birbirini ayırır, (-eps, 0] aralığı sıfırsızdır; bozulmuş aileyle negatif kontrol | `run_cheb_osilasyon_A.log`, `run_cheb_osilasyon_B.log` |
@@ -42,6 +44,7 @@ Ek log: `run_cheb_B_K120.log` (B hücresi, Legendre kesimi K = 120).
 
     python -u tw_reproduce.py
     python -u tw_sigma_sert_v1.py --ivdps 80,140
+    python -u tw_sigma_sert_v2.py
     python -u cheb_indirge_v1.py
     python -u cheb_isaret_v1.py --cell B --kume 300
     python -u cheb_osilasyon_v1.py --cell B --K 120
